@@ -58,18 +58,16 @@ vec3 phong(PhongLamp lamp, PhongMaterial mat)
     // Ambient lighting
     ambient = mat.ambient * lamp.ambient;
     // Diffuse lighting
-    vec3 normal = normalize(v_local_normal);
-    if (!gl_FrontFacing) normal *= -1.0;
+    vec3 normal = normalize(v_local_normal) * (gl_FrontFacing ? 1.0 : -1.0);
     vec3 incident = (lamp.mode == LAMP_MODE_SUN) ?
-                    normalize(lamp.pos) :
-                    normalize(v_local_pos - lamp.pos);
-    float fac_diffuse = max(dot(normal, -incident), 0.0);
+                    normalize(-lamp.pos) :
+                    normalize(lamp.pos - v_local_pos);
+    float fac_diffuse = max(dot(normal, incident), 0.0);
     diffuse = fac_diffuse * mat.diffuse * lamp.diffuse;
     // Specular lighting
-    vec3 view_dir = normalize(v_local_pos - u_camera_pos);
-    vec3 reflected = reflect(incident, normal);
-    float fac_specular = pow(max(dot(-view_dir, reflected), 0.0),
-                             mat.shininess);
+    vec3 view_dir = normalize(u_camera_pos - v_local_pos);
+    vec3 halfway = normalize(view_dir + incident);
+    float fac_specular = pow(max(dot(normal, halfway), 0.0), mat.shininess);
     specular = fac_specular * mat.specular * lamp.specular;
     // Combination
     vec3 combined = ambient + diffuse + specular;
