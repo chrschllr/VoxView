@@ -46,12 +46,11 @@ layout(location = 0) out vec4 FragColor;
 #define INCLUDE_SECTION_IMPLEMENTATION
 vec3 phong(PhongLamp lamp, PhongMaterial mat)
 {
-    float sgn_norm = gl_FrontFacing ? 1.0 : -1.0;
     vec3 ambient, diffuse, specular;
     // Ambient lighting
     ambient = mat.ambient * lamp.ambient;
     // Diffuse lighting
-    vec3 normal = normalize(v_local_normal) * sgn_norm;
+    vec3 normal = normalize(v_local_normal) * (gl_FrontFacing ? 1.0 : -1.0);
     vec3 incident = (lamp.mode == LAMP_MODE_SUN) ?
                     normalize(-lamp.pos) :
                     normalize(lamp.pos - v_local_pos);
