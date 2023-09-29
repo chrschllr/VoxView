@@ -78,15 +78,15 @@ const
     Constant: 1.0; Linear: 0.05; Quadratic: 0.008;
   );
   PHONG_LAMP_4P_WHITE_DEFAULT: TVoxPhongLamp = (
-    Mode: lmPoint;
-    Position: (X: -0.590; Y: 0.643; Z: 0.487);
+    Mode: lmSun;
+    Position: (X: -0.590; Y: 0.643; Z: -0.487);
     Ambient:  (R: 0.059; G: 0.059; B: 0.059; A: NaN);
     Diffuse:  (R: 0.588; G: 0.588; B: 0.588; A: NaN);
     Specular: (R: 0.361; G: 0.361; B: 0.361; A: NaN);
     Constant: 1.0; Linear: 0.05; Quadratic: 0.008;
   );
   PHONG_LAMP_4P_ORANGE_DEFAULT: TVoxPhongLamp = (
-    Mode: lmPoint;
+    Mode: lmSun;
     Position: (X: 0.763; Y: 0.251; Z: -0.595);
     Ambient:  (R: 0.000; G: 0.000; B: 0.000; A: NaN);
     Diffuse:  (R: 0.420; G: 0.353; B: 0.294; A: NaN);
@@ -94,7 +94,7 @@ const
     Constant: 1.0; Linear: 0.05; Quadratic: 0.008;
   );
   PHONG_LAMP_4P_BLUE_DEFAULT: TVoxPhongLamp = (
-    Mode: lmPoint;
+    Mode: lmSun;
     Position: (X: -0.412; Y: -0.640; Z: -0.648);
     Ambient:  (R: 0.000; G: 0.000; B: 0.000; A: NaN);
     Diffuse:  (R: 0.525; G: 0.573; B: 0.690; A: NaN);
@@ -102,7 +102,7 @@ const
     Constant: 1.0; Linear: 0.05; Quadratic: 0.008;
   );
   PHONG_LAMP_4P_RED_DEFAULT: TVoxPhongLamp = (
-    Mode: lmPoint;
+    Mode: lmSun;
     Position: (X: -0.080; Y: -0.478; Z: 0.875);
     Ambient:  (R: 0.000; G: 0.000; B: 0.000; A: NaN);
     Diffuse:  (R: 0.424; G: 0.290; B: 0.294; A: NaN);
